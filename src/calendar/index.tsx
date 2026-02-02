@@ -304,7 +304,6 @@ const Calendar = (props: CalendarProps & ContextProp) => {
       >
         {renderHeader()}
         {
-          events &&
           renderMonth()
         }
       </View>
