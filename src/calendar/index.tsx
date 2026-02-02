@@ -106,7 +106,7 @@ const Calendar = (props: CalendarProps & ContextProp) => {
       return;
     }
     const result = await props?.preProcessRenderCalendar(props.current)
-    console.log(result);
+    console.log("#####", result);
   }
 
   useEffect(() => {
