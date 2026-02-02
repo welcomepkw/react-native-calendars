@@ -15,9 +15,11 @@ export type CalendarListItemProps = CalendarProps & {
   theme?: Theme;
   scrollToMonth?: (date: XDate) => void;
   visible?: boolean;
+
+  preProcessRenderCalendar?: (date: XDate) => Promise<void>
 };
 
-const CalendarListItem = React.memo((props: CalendarListItemProps) => {  
+const CalendarListItem = React.memo((props: CalendarListItemProps) => {
   const {
     item,
     theme,
@@ -33,25 +35,25 @@ const CalendarListItem = React.memo((props: CalendarListItemProps) => {
   } = props;
 
   const style = useRef(styleConstructor(theme));
-  
+
   const calendarProps = extractCalendarProps(props);
   const dateString = toMarkingFormat(item);
-  
+
   const calendarStyle = useMemo(() => {
     return [
       {
         width: calendarWidth,
         minHeight: calendarHeight
-      }, 
+      },
       style.current.calendar,
       propsStyle
     ];
   }, [calendarWidth, calendarHeight, propsStyle]);
-  
+
   const textStyle = useMemo(() => {
     return [calendarStyle, style.current.placeholderText];
   }, [calendarStyle]);
-  
+
   const _onPressArrowLeft = useCallback((method: () => void, month?: XDate) => {
     const monthClone = month?.clone();
     if (monthClone) {

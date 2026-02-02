@@ -38,6 +38,8 @@ export interface CalendarListProps extends CalendarProps, Omit<FlatListProps<any
   showScrollIndicator?: boolean;
   /** Whether to animate the auto month scroll */
   animateScroll?: boolean;
+
+  preProcessRenderCalendar?: (date: XDate) => Promise<void>
 }
 
 export interface CalendarListImperativeMethods {
@@ -103,7 +105,7 @@ const CalendarList = (props: CalendarListProps & ContextProp, ref: any) => {
     onEndReached,
     onHeaderLayout,
     accessibilityElementsHidden,
-    importantForAccessibility
+    importantForAccessibility,
   } = props;
 
   const calendarProps = extractCalendarProps(props);

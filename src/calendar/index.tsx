@@ -60,6 +60,9 @@ export interface CalendarProps extends CalendarHeaderProps, DayProps {
   disabledByWeekDays?: number[];
   /** Test ID */
   testID?: string;
+
+
+  preProcessRenderCalendar?: (date: XDate) => Promise<void>
 }
 
 /**
@@ -97,6 +100,8 @@ const Calendar = (props: CalendarProps & ContextProp) => {
   const style = useRef(styleConstructor(theme));
   const header = useRef();
   const weekNumberMarking = useRef({disabled: true, disableTouchEvent: true});
+
+  console.log("@@@@@@@@@@@@", initialDate, props.preProcessRenderCalendar);
 
   useEffect(() => {
     if (initialDate) {
