@@ -11,7 +11,6 @@ export default function getStyle(theme: Theme = {}) {
     },
     container: {
       // backgroundColor: appStyle.calendarBackground,
-      backgroundColor: 'yellow',
       flex: 1,
     },
     placeholder: {
