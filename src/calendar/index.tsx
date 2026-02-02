@@ -100,13 +100,14 @@ const Calendar = (props: CalendarProps & ContextProp) => {
   const style = useRef(styleConstructor(theme));
   const header = useRef();
   const weekNumberMarking = useRef({disabled: true, disableTouchEvent: true});
+  const [events, setEvents] = useState<any>(undefined);
 
   const doPreProcess = async () => {
     if(!props.preProcessRenderCalendar || !props.current){
       return;
     }
     const result = await props?.preProcessRenderCalendar(props.current)
-    console.log("#####", result);
+    setEvents(result);
   }
 
   useEffect(() => {
@@ -222,6 +223,7 @@ const Calendar = (props: CalendarProps & ContextProp) => {
           marking={markedDates?.[dateString]}
           onPress={_onDayPress}
           onLongPress={onLongPressDay}
+          events={events}
         />
       </View>
     );
@@ -301,7 +303,10 @@ const Calendar = (props: CalendarProps & ContextProp) => {
         importantForAccessibility={importantForAccessibility} // Android
       >
         {renderHeader()}
-        {renderMonth()}
+        {
+          events &&
+          renderMonth()
+        }
       </View>
     </GestureComponent>
   );

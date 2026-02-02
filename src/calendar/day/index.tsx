@@ -24,6 +24,8 @@ function areEqual(prevProps: DayProps, nextProps: DayProps) {
 export interface DayProps extends BasicDayProps {
   /** Provide custom day rendering component */
   dayComponent?: React.ComponentType<DayProps & {date?: DateData}>; // TODO: change 'date' prop type to string by removing it from overriding BasicDay's 'date' prop (breaking change for V2)
+
+  events?: any
 }
 
 const Day = React.memo((props: DayProps) => {
@@ -68,7 +70,7 @@ const Day = React.memo((props: DayProps) => {
   }, [_date, marking, _isToday]);
 
   const Component = dayComponent || (markingType === 'period' ? PeriodDay : BasicDay);
-  const dayComponentProps = dayComponent ? {date: xdateToData(date || new XDate())} : undefined;
+  const dayComponentProps = dayComponent ? {date: xdateToData(date || new XDate()), events: props.events} : undefined;
 
   return (
     //@ts-expect-error
