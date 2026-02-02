@@ -101,7 +101,7 @@ const Calendar = (props: CalendarProps & ContextProp) => {
   const header = useRef();
   const weekNumberMarking = useRef({disabled: true, disableTouchEvent: true});
 
-  console.log("@@@@@@@@@@@@", initialDate, props.preProcessRenderCalendar);
+  console.log("@@@@@@@@@@@@", current, props.preProcessRenderCalendar);
 
   useEffect(() => {
     if (initialDate) {
