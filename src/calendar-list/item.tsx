@@ -16,7 +16,7 @@ export type CalendarListItemProps = CalendarProps & {
   scrollToMonth?: (date: XDate) => void;
   visible?: boolean;
 
-  preProcessRenderCalendar?: (date: string) => Promise<void>
+  preProcessRenderCalendar?: (date: string) => Promise<any>
 };
 
 const CalendarListItem = React.memo((props: CalendarListItemProps) => {

@@ -39,7 +39,7 @@ export interface CalendarListProps extends CalendarProps, Omit<FlatListProps<any
   /** Whether to animate the auto month scroll */
   animateScroll?: boolean;
 
-  preProcessRenderCalendar?: (date: string) => Promise<void>
+  preProcessRenderCalendar?: (date: string) => Promise<any>
 }
 
 export interface CalendarListImperativeMethods {
