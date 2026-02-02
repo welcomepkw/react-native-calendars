@@ -8,7 +8,8 @@ export default function getStyle(theme: Theme = {}) {
     container: {
       paddingLeft: 5,
       paddingRight: 5,
-      backgroundColor: appStyle.calendarBackground
+      backgroundColor: appStyle.calendarBackground,
+      flex: 1
     },
     dayContainer: {
       flex: 1,
@@ -18,7 +19,8 @@ export default function getStyle(theme: Theme = {}) {
       flex: 1
     },
     monthView: {
-      backgroundColor: appStyle.calendarBackground
+      backgroundColor: appStyle.calendarBackground,
+      flex: 1
     },
     week: {
       marginVertical: appStyle.weekVerticalMargin,
